@@ -1,0 +1,8 @@
+// array-vector-slice -- ["valor1","valor2","valor3"] -- array[2]
+// tuplas-array-estaticos -- no se puede cambiar sus valores
+// objetos -- {clave : valor} config{"ips":[], "os":"darwin", "is_ml":true, "metadata":{"host_name":"xxx"}} --- config.os = "darwin"
+
+// int - int64 - int34 - int16
+{
+
+}
