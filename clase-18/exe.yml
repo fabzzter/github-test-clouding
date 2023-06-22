@@ -1,0 +1,30 @@
+- name: "example files"
+  hosts: localhost
+  vars:
+    files:
+      - hola1
+      - hola2
+      - hola3
+      - hola4
+      - hola5
+  tasks:
+  - name: "create files on txt format"
+    file:
+      path: /tmp/{{item}}.txt
+      state: touch
+    with_items: "{{ files }}"
+
+  - name: "list all files with extension txt into a folder"
+    find:
+      paths: /tmp
+      patterns: "*.txt"
+    register: list_files
+
+  - name: "write something into file"
+    lineinfile:
+      path: "{{item.path}}"
+      line: "escribir algo--------------- {{item.mtime}}"
+    with_items: "{{list_files.files}}"
+
+    -debug:
+      var: list_files
